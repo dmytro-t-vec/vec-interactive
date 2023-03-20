@@ -1,47 +1,80 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+import Card from "./components/Card.vue";
+export default {
+  components: { Card },
+  data() {
+    return {
+      pool: [
+        "Рассказать необычный фактор о себе, о котором мы еще не знаем",
+        "Сказать по 1 комплименту каждому",
+        "Придумать смешное оправдание: Почему ты не вынес мусор?",
+        "Выбрать собеседника и устроить с ним дебаты на тему: Нетрадиционная ориентация",
+        "Рассказать о первых отношениях",
+        "Выбрать противника и устроить с ним дебаты на тему: Пластическая хирургия",
+        "Что изменилось в моей жизни после прихода в VEC?",
+        "Найти мемасик и отправить в общий чат в телеграмм",
+        "Спеть куплет любой песни",
+        "Рассказать о первой работе",
+        "Поделиться советом, как поднять настроение, когда оно плохое?",
+        "Любимые фильмы, сериалы или мультфильмы",
+        "Выбрать собеседника и устроить с ним дебаты на тему: Поцелуй на первом свидании",
+        "Вспомнить и рассказать свой первый день в VEC",
+        "Отгадать: что удлиняется, когда его берут в руки, пропускают между грудей и засовывают в отверстие?",
+        "Назвать столицы стран: Польша, Португалия, Испания, Канада, Италия, Япония, Финляндия, Швейцария",
+        "Поделиться советом: Как не выгореть и что делать если выгорел (на практике, если было)",
+        "Что я приобрел попав в VEC?",
+        "Описать свое настроение 3 словами",
+        "Придумай причину, чтобы убежать со свидания",
+        "Какие у тебя есть прозвища для коллег?",
+        "Какое животное можно увеличить до размера лошади, чтобы итог выглядел забавно и смешно?",
+        "Какую самую страшную вещь ты мог(ла) бы сказать, проходя мимо незнакомца на улице?",
+        "Если тебя перенести в прошлое на 400 лет назад без одежды и чего-либо еще, как бы ты доказал(а), что ты из будущего?",
+        "Какой будет шляпа, чтобы положить конец всем шляпам? Что можно надеть на голову, что заставит людей замереть, и смотреть с трепетом и изумлением?",
+        "Какой корпоративной традиции не хватает в VEC?",
+        "Рассказать о неловком случае, который с тобой произошёл",
+        "Рассказать о себе что-нибудь такое, что удивило бы даже тех людей, которые тебя знают",
+        "Если бы список 7 чудес света нужно было составить заново, что бы ты в него включил(ла)?",
+        "Выбрать собеседника и устроить с ним дебаты на тему: Народная медицина,",
+      ],
+    };
+  },
+  computed: {
+    shuffledPool() {
+      return this.pool.sort(() => Math.random() - 0.5).slice(0, 16);
+    },
+    windowComp() {
+      return window;
+    },
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <button class="reload-btn" @click="windowComp.location.reload()">
+    <img src="./assets/icons8-update-left-rotation-24.png" alt="" />
+  </button>
+  <template v-for="i in 16" :key="i">
+    <Card :number="i" :text="shuffledPool[i - 1]" />
+  </template>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.reload-btn {
+  top: 50px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -100px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: unset;
+  background: transparent;
+  transition: all ease 0.3s;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.reload-btn:hover {
+  transform: rotate(90deg);
+  transition: all ease 0.3s;
 }
 </style>
