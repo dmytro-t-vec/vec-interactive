@@ -20,12 +20,10 @@ export default {
     <div class="flip-card-inner">
       <div class="flip-card-front">
         {{ number }}
-        <!-- Какой будет шляпа, чтобы положить конец всем шляпам? Что можно надеть на
-        голову, что заставит людей замереть, и смотреть с трепетом и изумлением? -->
+       
       </div>
       <div class="flip-card-back">
         {{ text }}
-        <!-- 1 -->
       </div>
     </div>
   </div>
@@ -37,7 +35,7 @@ export default {
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 200px;
+  height: 190px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -63,7 +61,7 @@ export default {
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 17px;
   padding: 0px 5px;
   position: absolute;
   width: 100%;
@@ -74,15 +72,16 @@ export default {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  border: 1px solid #000;
-  background-color: dodgerblue;
-  color: black;
+  /* border: 1px solid #000; */
+  background-color: #1662F4;
+  font-size: 30px;
+  color: white;
 }
 
 /* Style the back side */
 .flip-card-back {
-  border: 1px solid #fff;
-  background-color: dodgerblue;
+  /* border: 1px solid #fff; */
+  background-color: #1662F4;
   color: white;
   transform: rotateY(180deg);
 }
